@@ -29,6 +29,21 @@ const player4 = {
     PODER : 3,
     PONTOS: 0,
 };
+const player5 = {
+    NOME : "Bowser",
+    VELOCIDADE : 5,
+    MANOBRABILIDADE : 2,
+    PODER : 5,
+    PONTOS: 0,
+};
+const player6 = {
+    NOME : "Donkey kong",
+    VELOCIDADE : 2,
+    MANOBRABILIDADE : 2,
+    PODER : 5,
+    PONTOS: 0,
+};
+
 async function choicePlayer() {
 
     const rl = readline.createInterface({ input, output });
@@ -39,6 +54,8 @@ async function choicePlayer() {
     console.log("2 - Luigi");
     console.log("3 - Peach");
     console.log("4 - Yoshi");
+    console.log("5 - Bowser");
+    console.log("6 - Donkey kong");
 
     const escolha = await rl.question("Digite o número: ");
     rl.close();
@@ -55,12 +72,21 @@ async function choicePlayer() {
     }else if(escolha == 4){
         console.log(player4.NOME)
         return player4;
+    }else if(escolha == 5){
+        console.log(player5.NOME)
+        return player5;
+    }else if(escolha == 6){
+        console.log(player6.NOME)
+        return player6;
+    }else{
+        console.log("ERROR")
     }
    
 }
+
 async function choicePlayerComputer() {
 
-    const player = Math.floor(Math.random() * 4) + 1;
+    const player = Math.floor(Math.random() * 6) + 1;
 
     switch(player){
         case 1 :
@@ -74,7 +100,12 @@ async function choicePlayerComputer() {
 
         case 4:
             return player4;
-        
+
+        case 5:
+            return player5;
+
+        case 6:
+            return player6;
         default:
             console.log("ERROR")
             break;
@@ -110,6 +141,7 @@ async function logRollResult(characterName, block, diceResult, attribute) {
     console.log(`${characterName} 🎲  rolou um dado de ${block} ${diceResult} + ${attribute} = ${diceResult+ attribute}`);
    
 }
+
 async function playRaceEngine(character1, character2) {
     for(let round = 1; round < 5; round++){
         console.log(`🏁 Rodada ${round}`);
@@ -189,6 +221,7 @@ async function playRaceEngine(character1, character2) {
         console.log("-------------------------------------------------");
     }
 }
+
 async function declareWinner(character1, character2) {
 
     console.log("Resultado Final:")
